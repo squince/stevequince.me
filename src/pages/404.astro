@@ -1,0 +1,37 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>404</h1>
+			<p>Page not found</p>
+		</main>
+	</main>
+	<Footer />
+	<style>
+		h1 {
+			font-size: 10rem;
+			margin-bottom: 1rem;
+		}
+	</style>
+</body>
+</html>
