@@ -1,0 +1,135 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { Image } from 'astro:assets';
+
+const posts = (await getCollection('musings'))
+	.filter((post) => post.data.postReady)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				width: 960px;
+			}
+			ul {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 2rem;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+			ul li {
+				width: calc(50% - 1rem);
+			}
+			ul li * {
+				text-decoration: none;
+				transition: 0.2s ease;
+			}
+			ul li:first-child {
+				width: 100%;
+				margin-bottom: 1rem;
+				text-align: center;
+			}
+			ul li:first-child img {
+				width: 100%;
+			}
+			ul li:first-child .title {
+				font-size: 2.369rem;
+			}
+			ul li img {
+				margin-bottom: 0.5rem;
+				border-radius: 12px;
+			}
+			ul li a {
+				display: block;
+			}
+			
+			/* Image overlay styling */
+			.image-container {
+				position: relative;
+				overflow: hidden;
+				border-radius: 12px;
+			}
+			
+			.overlay-text {
+				position: absolute;
+				color: white;
+				padding: 2rem;
+				top: 50%;
+				left: 0;
+				right: 0;
+				transform: translateY(-50%);
+				text-align: center;
+			}
+			
+			.overlay-text .title {
+				color: white;
+				line-height: 1.2;
+				text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+			}
+			
+			.overlay-text .date {
+				margin: 0;
+				color: rgba(255, 255, 255, 0.9);
+				text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+			}
+			@media (max-width: 55em) {
+				ul {
+					gap: 0.5em;
+				}
+				ul li {
+					width: 100%;
+					text-align: center;
+				}
+				ul li:first-child {
+					margin-bottom: 0;
+				}
+				ul li:first-child .title {
+					font-size: 1.563em;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section>
+				<ul>
+					{
+						posts.map((post) => (
+							<li>
+								<a href={`/musings/${post.id}/`}>
+									{post.data.heroImage && (
+										<div class="image-container">
+											<Image width={720} height={360} src={post.data.heroImage} alt="" />
+											{post.data.heroText && (
+												<div class="overlay-text">
+													<h4 class="title">{post.data.heroText}</h4>
+												</div>
+											)}
+										</div>
+									)}
+									<h4 class="title">{post.data.title}</h4>
+                                    <p class="date">
+                                        <FormattedDate date={post.data.pubDate} />
+                                    </p>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

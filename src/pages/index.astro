@@ -1,0 +1,51 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { Image } from 'astro:assets';
+import SteveImage from '../assets/steve.jpg';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1 class="cursive">Steve Quince</h1>
+			<Image src={SteveImage} alt="Steve Quince" width={200} height={200} class="profile-image" />
+			<p>That's me! Welcome to my "home" on the web.</p>
+			<p>
+				You can also find me loitering at some of <a href="/outposts">the usual haunts</a>.
+			</p>
+			<p>
+				I am a software engineer by trade, father by choice, husband by good fortune, and dog lover by default.
+			</p>
+			<p>
+				And, so much more — but let's not get ahead of ourselves. You can learn more about me, my work, hobbies, background, philosophical leanings, and more as I blather on in <a href="/musings">these blog posts</a>.
+			</p>
+		</main>
+	</main>
+	<Footer />
+	<style>
+		.profile-image {
+			float: right;
+			margin: 0 0 2rem 2rem;
+			border-radius: 2rem;
+			shape-outside: circle(50%);
+		}
+		h1 {
+			margin-bottom: 1rem;
+		}
+		main {
+			overflow: hidden; /* Contains the floated element */
+		}
+		main a {
+			text-decoration: none;
+		}
+	</style>
+</body>
+</html>

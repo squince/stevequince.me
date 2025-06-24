@@ -1,0 +1,55 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Icon from '../components/Icon.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			h3, p, ul li {
+				margin-bottom: 2rem;
+			}
+			ul li {
+				display: flex;
+			}
+			ul li a {
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h3>My Usual Haunts</h3>
+			<p>
+				Here are some of the places I like to hang out on the web.
+			</p>
+			<ul>
+				<li><a href="https://www.linkedin.com/in/stevequince/">
+					<Icon icon="linkedin-logo" size="2rem"/>
+					LinkedIn
+				</a></li>
+				<li><a href="https://github.com/squince">
+					<Icon icon="github-logo" size="2rem" />
+					GitHub
+				</a></li>
+				<li><a href="https://askewsoft.com">
+					<Icon icon="angular-logo" size="2rem" />
+					Portfolio
+				</a></li>
+				<li><a href="https://www.facebook.com/steven.quince.2025">
+					<Icon icon="facebook-logo" size="2rem" />
+					Facebook
+				</a></li>
+			</ul>
+		</main>
+		<Footer />
+	</body>
+</html>
