@@ -1,13 +1,4 @@
----
-title: 'Markdown Style Guide'
-description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
-postReady: false
-pubDate: 'Jun 19 2024'
-heroImage: '../../assets/comingsoon.jpg'
-heroText: 'Coming Soon!'
----
-
-Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
+# Markdown syntax that can be used when content in Astro.
 
 ## Headings
 
@@ -52,13 +43,13 @@ The blockquote element represents content that is quoted from another source, op
 #### Syntax
 
 ```markdown
-> Tiam, ad mint andaepu dandae nostion secatur sequo quae.  
+> Tiam, ad mint andaepu dandae nostion secatur sequo quae.
 > **Note** that you can use _Markdown syntax_ within a blockquote.
 ```
 
 #### Output
 
-> Tiam, ad mint andaepu dandae nostion secatur sequo quae.  
+> Tiam, ad mint andaepu dandae nostion secatur sequo quae.
 > **Note** that you can use _Markdown syntax_ within a blockquote.
 
 ### Blockquote with attribution

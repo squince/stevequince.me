@@ -14,6 +14,7 @@ const musings = defineCollection({
 		updatedDate: z.coerce.date().optional(),
 		heroImage: image().optional(),
 		heroText: z.string().optional(),
+		heroImageCredit: z.string().optional(),
 	}),
 });
 
