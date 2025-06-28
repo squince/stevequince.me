@@ -50,6 +50,16 @@ const { title, description, pubDate, updatedDate, heroImage, heroText, heroImage
 			.last-updated-on {
 				font-style: italic;
 			}
+
+			.talkyard-comments {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 0.5em;
+				color: rgb(var(--gray));
+				font-size: 0.9em;
+				opacity: 0.9;
+			}
 			
 			/* Component-specific responsive adjustments */
 			@media (max-width: 35em) {
@@ -95,6 +105,12 @@ const { title, description, pubDate, updatedDate, heroImage, heroText, heroImage
 				</div>
 			</article>
 		</main>
+		<script is:inline>talkyardServerUrl='https://site-qeybkd821q.talkyard.net';</script>
+		<script is:inline defer src="https://c1.ty-cdn.net/-/talkyard-comments.min.js"></script>
+		<!-- You can specify a per page discussion id on the next line, if your URLs might change. -->
+		<div class="talkyard-comments" data-discussion-id={title}>
+			<noscript>Please enable Javascript to view comments.</noscript>
+		</div>
 		<Footer />
 	</body>
 </html>
