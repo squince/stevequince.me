@@ -1,0 +1,91 @@
+---
+import { Image } from 'astro:assets';
+
+export interface Props {
+	heroImage?: ImageMetadata;
+	heroText?: string;
+	heroImageCredit?: string;
+	width?: number;
+	height?: number;
+}
+
+const { heroImage, heroText, heroImageCredit, width = 720, height = 360 } = Astro.props;
+---
+
+{heroImage && (
+	<div class="image-container">
+		<Image width={width} height={height} src={heroImage} alt="" />
+		{heroText && (
+			<div class="overlay-text">
+				<h4 class="title">{heroText}</h4>
+			</div>
+		)}
+		{heroImageCredit && (
+			<div class="image-credit">credit: {heroImageCredit}</div>
+		)}
+	</div>
+)}
+
+<style>
+	.image-container {
+		position: relative;
+		overflow: hidden;
+		border-radius: 12px;
+		display: inline-block;
+		width: 100%;
+	}
+	
+	.image-container img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+	
+	.overlay-text {
+		position: absolute;
+		color: white;
+		padding: 2rem;
+		top: 50%;
+		left: 0;
+		right: 0;
+		transform: translateY(-50%);
+		text-align: center;
+	}
+	
+	.overlay-text .title {
+		color: white;
+		line-height: 1.2;
+		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+	}
+	
+	.image-credit {
+		position: absolute;
+		right: 0px;
+		top: 50%;
+		transform: rotate(90deg) translateY(-400%);
+		transform-origin: center;
+		color: rgba(255, 255, 255, 0.8);
+		font-size: 0.75rem;
+		font-weight: 300;
+		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+		white-space: nowrap;
+		z-index: 10;
+		max-width: 90vh;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	
+	@media (max-width: 55em) {
+		.image-credit {
+			font-size: 0.7rem;
+			max-width: 80vh;
+		}
+	}
+	
+	@media (max-width: 35em) {
+		.image-credit {
+			font-size: 0.65rem;
+			max-width: 70vh;
+		}
+	}
+</style> 
