@@ -7,6 +7,11 @@ import { SITE_TITLE } from '../consts';
 <header>
 	<nav>
 		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+			<span class="hamburger-line"></span>
+			<span class="hamburger-line"></span>
+			<span class="hamburger-line"></span>
+		</button>
 		<div class="internal-links">
 			<HeaderLink href="/">Me Who</HeaderLink>
 			<HeaderLink href="/musings">Me Blathering</HeaderLink>
@@ -17,12 +22,31 @@ import { SITE_TITLE } from '../consts';
 		</div> -->
 	</nav>
 </header>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const hamburger = document.querySelector('.hamburger');
+		const navLinks = document.querySelector('.internal-links');
+		
+		if (hamburger && navLinks) {
+			hamburger.addEventListener('click', function() {
+				const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+				
+				hamburger.setAttribute('aria-expanded', (!isExpanded).toString());
+				hamburger.classList.toggle('active');
+				navLinks.classList.toggle('show');
+			});
+		}
+	});
+</script>
+
 <style>
 	header {
 		margin: 0;
 		padding: 0 1em;
 		background: white;
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+		position: relative;
 	}
 	h2 {
 		margin: 0;
@@ -38,6 +62,7 @@ import { SITE_TITLE } from '../consts';
 		align-items: center;
 		font-family: 'Kanit';
 		justify-content: space-between;
+		position: relative;
 	}
 	nav a {
 		padding: 1em 0.5em;
@@ -49,6 +74,41 @@ import { SITE_TITLE } from '../consts';
 		text-decoration: none;
 	}
 
+	.hamburger {
+		display: none;
+		flex-direction: column;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0.5em;
+		z-index: 1000;
+	}
+
+	.hamburger-line {
+		width: 25px;
+		height: 3px;
+		background-color: rgb(var(--black));
+		margin: 3px 0;
+		transition: 0.3s ease;
+		transform-origin: center;
+	}
+
+	.hamburger.active .hamburger-line:nth-child(1) {
+		transform: rotate(45deg) translate(6px, 6px);
+	}
+
+	.hamburger.active .hamburger-line:nth-child(2) {
+		opacity: 0;
+	}
+
+	.hamburger.active .hamburger-line:nth-child(3) {
+		transform: rotate(-45deg) translate(6px, -6px);
+	}
+
+	.internal-links {
+		display: flex;
+	}
+
 	/* .theme-toggle {
 		display: flex;
 		align-items: center;
@@ -56,8 +116,51 @@ import { SITE_TITLE } from '../consts';
 	} */
 
 	@media (max-width: 55em) {
+		.hamburger {
+			display: flex !important;
+		}
+		
+		.internal-links {
+			display: none !important;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			background: white;
+			box-shadow: 0 2px 8px rgba(var(--black), 10%);
+			flex-direction: column;
+			padding: 0;
+			z-index: 999;
+		}
+		
+		.internal-links.show {
+			display: flex !important;
+		}
+		
+		.internal-links :global(a) {
+			padding: 1em !important;
+			border-bottom: 1px solid rgba(var(--gray-light), 50%) !important;
+			border-left: none !important;
+			border-right: none !important;
+			border-top: none !important;
+		}
+		
+		.internal-links :global(a:last-child) {
+			border-bottom: none !important;
+		}
+		
 		.social-links {
 			display: none;
+		}
+	}
+
+	@media (min-width: 55.01em) {
+		.hamburger {
+			display: none !important;
+		}
+		
+		.internal-links {
+			display: flex !important;
 		}
 	}
 </style>
