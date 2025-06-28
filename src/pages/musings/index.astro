@@ -5,7 +5,7 @@ import Footer from '../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
-import { Image } from 'astro:assets';
+import HeroImage from '../../components/HeroImage.astro';
 
 const posts = (await getCollection('musings'))
 	.filter((post) => post.data.postReady)
@@ -53,36 +53,6 @@ const posts = (await getCollection('musings'))
 			ul li a {
 				display: block;
 			}
-			
-			/* Image overlay styling */
-			.image-container {
-				position: relative;
-				overflow: hidden;
-				border-radius: 12px;
-			}
-			
-			.overlay-text {
-				position: absolute;
-				color: white;
-				padding: 2rem;
-				top: 50%;
-				left: 0;
-				right: 0;
-				transform: translateY(-50%);
-				text-align: center;
-			}
-			
-			.overlay-text .title {
-				color: white;
-				line-height: 1.2;
-				text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-			}
-			
-			.overlay-text .date {
-				margin: 0;
-				color: rgba(255, 255, 255, 0.9);
-				text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-			}
 			@media (max-width: 55em) {
 				ul {
 					gap: 0.5em;
@@ -109,16 +79,13 @@ const posts = (await getCollection('musings'))
 						posts.map((post) => (
 							<li>
 								<a href={`/musings/${post.id}/`}>
-									{post.data.heroImage && (
-										<div class="image-container">
-											<Image width={720} height={360} src={post.data.heroImage} alt="" />
-											{post.data.heroText && (
-												<div class="overlay-text">
-													<h4 class="title">{post.data.heroText}</h4>
-												</div>
-											)}
-										</div>
-									)}
+									<HeroImage 
+										heroImage={post.data.heroImage}
+										heroText={post.data.heroText}
+										heroImageCredit={post.data.heroImageCredit}
+										width={720}
+										height={360}
+									/>
 									<h4 class="title">{post.data.title}</h4>
                                     <p class="date">
                                         <FormattedDate date={post.data.pubDate} />
