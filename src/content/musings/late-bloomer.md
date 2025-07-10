@@ -2,7 +2,7 @@
 title: 'A Late Bloomer'
 description: 'Photograph of a single Helenium in focus over a blurred field of flowers in the background'
 postReady: true
-pubDate: 'July 26 2025'
+pubDate: 'June 26 2025'
 heroImage: '../../assets/helenium-by-roman-biernacki-via-pexels.jpg'
 heroText: ''
 heroImageCredit: 'Roman Biernacki via Pexels'
