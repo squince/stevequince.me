@@ -5,16 +5,14 @@ export interface Props {
 	heroImage?: ImageMetadata;
 	heroText?: string;
 	heroImageCredit?: string;
-	width?: number;
-	height?: number;
 }
 
-const { heroImage, heroText, heroImageCredit, width = 720, height = 360 } = Astro.props;
+const { heroImage, heroText, heroImageCredit } = Astro.props;
 ---
 
 {heroImage && (
 	<div class="image-container">
-		<Image width={width} height={height} src={heroImage} alt="" />
+		<Image src={heroImage} alt="" />
 		{heroText && (
 			<div class="overlay-text">
 				<h4 class="title">{heroText}</h4>
@@ -31,14 +29,15 @@ const { heroImage, heroText, heroImageCredit, width = 720, height = 360 } = Astr
 		position: relative;
 		overflow: hidden;
 		border-radius: 12px;
-		display: inline-block;
-		width: 100%;
+		display: block;
+		aspect-ratio: 4/3;
 	}
 	
 	.image-container img {
 		display: block;
 		width: 100%;
-		height: auto;
+		height: 100%;
+		object-fit: cover;
 	}
 	
 	.overlay-text {
@@ -60,17 +59,17 @@ const { heroImage, heroText, heroImageCredit, width = 720, height = 360 } = Astr
 	
 	.image-credit {
 		position: absolute;
-		right: 0px;
+		right: 0.75rem;
 		top: 50%;
-		transform: rotate(90deg) translateY(-400%);
-		transform-origin: center;
+		transform: translateY(-50%) rotate(90deg) translateX(50%);
+		transform-origin: right center;
 		color: rgba(255, 255, 255, 0.8);
 		font-size: 0.75rem;
 		font-weight: 300;
 		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 		white-space: nowrap;
 		z-index: 10;
-		max-width: 90vh;
+		max-height: 80%;
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
@@ -78,14 +77,16 @@ const { heroImage, heroText, heroImageCredit, width = 720, height = 360 } = Astr
 	@media (max-width: 55em) {
 		.image-credit {
 			font-size: 0.7rem;
-			max-width: 80vh;
+			right: 0.75rem;
+			max-height: 75%;
 		}
 	}
 	
 	@media (max-width: 35em) {
 		.image-credit {
 			font-size: 0.65rem;
-			max-width: 70vh;
+			right: 0.5rem;
+			max-height: 70%;
 		}
 	}
 </style> 
