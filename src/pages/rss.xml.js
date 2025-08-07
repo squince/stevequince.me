@@ -1,10 +1,13 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import steveImage from '../assets/steve.jpg';
 
 export async function GET(context) {
 	const posts = await getCollection('musings');
 	const readyPosts = posts.filter((post) => post.data.postReady);
+	const imageUrl = new URL(steveImage.src, context.site).href;
+	
 	return rss({
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,
@@ -42,6 +45,6 @@ export async function GET(context) {
 				link: `/musings/${post.id}/`,
 			};
 		}),
-		customData: `<language>en-us</language>`,
+		customData: `<language>en-us</language><image><url>${imageUrl}</url><title>Steve Quince</title><link>${context.site.href}</link><width>200</width><height>200</height></image>`,
 	});
 }
