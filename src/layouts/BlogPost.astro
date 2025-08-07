@@ -51,6 +51,28 @@ const { title, description, pubDate, updatedDate, heroImage, heroText, heroImage
 				font-style: italic;
 			}
 
+			.rss-subscribe {
+				margin: 1em 0;
+				padding: 0.5em;
+				background: rgba(var(--gray-light), 20%);
+				border-radius: 4px;
+				text-align: center;
+			}
+
+			.rss-subscribe p {
+				margin: 0;
+				font-size: 0.9em;
+			}
+
+			.rss-subscribe a {
+				color: rgb(var(--gray-dark));
+				text-decoration: underline;
+			}
+
+			.rss-subscribe a:hover {
+				color: rgb(var(--black));
+			}
+
 			.talkyard-comments {
 				width: 720px;
 				max-width: calc(100% - 2em);
@@ -97,9 +119,12 @@ const { title, description, pubDate, updatedDate, heroImage, heroText, heroImage
 							}
 						</div>
 						<h1>{title}</h1>
-						<hr />
 					</div>
 					<slot />
+					<hr />
+					<div class="rss-subscribe">
+						<p>Enjoyed this post? <a href="/rss.xml">Subscribe to my RSS feed</a> to get notified of new posts.</p>
+					</div>
 				</div>
 			</article>
 		</main>

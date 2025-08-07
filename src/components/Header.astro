@@ -1,5 +1,6 @@
 ---
 import HeaderLink from './HeaderLink.astro';
+import Icon from './Icon.astro';
 // import ThemeToggle from './ThemeToggle.astro';
 import { SITE_TITLE } from '../consts';
 ---
@@ -16,6 +17,11 @@ import { SITE_TITLE } from '../consts';
 			<HeaderLink href="/">Me Who</HeaderLink>
 			<HeaderLink href="/musings">Me Blathering</HeaderLink>
 			<HeaderLink href="/outposts">Me Loitering</HeaderLink>
+		</div>
+		<div class="rss-link">
+			<a href="/rss.xml" aria-label="RSS Feed" title="Subscribe to RSS Feed">
+				<Icon icon="rss" size="1.25em" />
+			</a>
 		</div>
 		<!-- <div class="theme-toggle">
 			<ThemeToggle />
@@ -109,6 +115,23 @@ import { SITE_TITLE } from '../consts';
 		display: flex;
 	}
 
+	.rss-link {
+		display: flex;
+		align-items: center;
+		margin-left: 1em;
+	}
+
+	.rss-link a {
+		color: var(--black);
+		opacity: 0.7;
+		transition: opacity 0.2s ease;
+		padding: 0.5em;
+	}
+
+	.rss-link a:hover {
+		opacity: 1;
+	}
+
 	/* .theme-toggle {
 		display: flex;
 		align-items: center;
@@ -150,6 +173,10 @@ import { SITE_TITLE } from '../consts';
 		}
 		
 		.social-links {
+			display: none;
+		}
+		
+		.rss-link {
 			display: none;
 		}
 	}
