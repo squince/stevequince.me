@@ -53,6 +53,13 @@ import { SITE_TITLE } from '../consts';
 		background: white;
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
 		position: relative;
+		display: flex;
+		justify-content: center;
+	}
+	
+	header > nav {
+		width: 1440px;
+		max-width: calc(100% - 2em);
 	}
 	h2 {
 		margin: 0;
@@ -139,6 +146,10 @@ import { SITE_TITLE } from '../consts';
 	} */
 
 	@media (max-width: 55em) {
+		header > nav {
+			max-width: calc(100% - 1em);
+		}
+		
 		.hamburger {
 			display: flex !important;
 		}
