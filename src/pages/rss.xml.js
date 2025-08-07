@@ -45,6 +45,6 @@ export async function GET(context) {
 				link: `/musings/${post.id}/`,
 			};
 		}),
-		customData: `<language>en-us</language><image><url>${imageUrl}</url><title>Steve Quince</title><link>${context.site.href}</link><width>200</width><height>200</height></image>`,
+		customData: `<language>en-us</language><lastBuildDate>${new Date().toUTCString()}</lastBuildDate><ttl>60</ttl><image><url>${imageUrl}</url><title>Steve Quince</title><link>${context.site.href}</link><width>200</width><height>200</height></image>`,
 	});
 }
