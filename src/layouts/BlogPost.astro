@@ -6,9 +6,12 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import HeroImage from '../components/HeroImage.astro';
 
-type Props = CollectionEntry<'musings'>['data'];
+type Props = CollectionEntry<'musings'>['data'] & {
+	prevPost?: { id: string; title: string } | null;
+	nextPost?: { id: string; title: string } | null;
+};
 
-const { title, description, pubDate, updatedDate, heroImage, heroText, heroImageCredit } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, heroText, heroImageCredit, prevPost, nextPost } = Astro.props;
 ---
 
 <html lang="en">
@@ -51,6 +54,48 @@ const { title, description, pubDate, updatedDate, heroImage, heroText, heroImage
 				font-style: italic;
 			}
 
+			.post-navigation {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin: 2em 0;
+				padding: 1em 0;
+				border-top: 1px solid rgba(var(--gray-light), 30%);
+				border-bottom: 1px solid rgba(var(--gray-light), 30%);
+			}
+
+			.post-navigation .nav-prev {
+				margin-right: auto;
+			}
+
+			.post-navigation .nav-next {
+				margin-left: auto;
+			}
+
+			.post-navigation a {
+				color: rgb(var(--gray-dark));
+				text-decoration: none;
+				padding: 0.5em 1em;
+				border-radius: 4px;
+				transition: all 0.2s ease;
+			}
+
+			.post-navigation a:hover {
+				background: rgba(var(--gray-light), 20%);
+				color: rgb(var(--black));
+			}
+
+			.post-navigation .nav-text {
+				font-size: 0.9em;
+				font-weight: 500;
+			}
+
+			.post-navigation .nav-title {
+				font-size: 0.8em;
+				margin-top: 0.25em;
+				opacity: 0.8;
+			}
+
 			.rss-subscribe {
 				margin: 1em 0;
 				padding: 0.5em;
@@ -91,6 +136,11 @@ const { title, description, pubDate, updatedDate, heroImage, heroText, heroImage
 				.hero-image {
 					padding: 0.5em;
 				}
+				.post-navigation {
+					flex-direction: column;
+					gap: 1em;
+					text-align: center;
+				}
 			}
 		</style>
 	</head>
@@ -121,6 +171,25 @@ const { title, description, pubDate, updatedDate, heroImage, heroText, heroImage
 						<h1>{title}</h1>
 					</div>
 					<slot />
+					
+					{(prevPost || nextPost) && (
+						<div class="post-navigation">
+							{prevPost && (
+								<a href={`/musings/${prevPost.id}/`} class="nav-prev">
+									<div class="nav-text">← Previous</div>
+									<div class="nav-title">{prevPost.title}</div>
+								</a>
+							)}
+							
+							{nextPost && (
+								<a href={`/musings/${nextPost.id}/`} class="nav-next">
+									<div class="nav-text">Next →</div>
+									<div class="nav-title">{nextPost.title}</div>
+								</a>
+							)}
+						</div>
+					)}
+					
 					<hr />
 					<div class="rss-subscribe">
 						<p>Enjoyed this post? <a href="/rss.xml">Subscribe to my RSS feed</a> to get notified of new posts.</p>
