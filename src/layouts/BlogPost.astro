@@ -11,7 +11,7 @@ type Props = CollectionEntry<'musings'>['data'] & {
 	nextPost?: { id: string; title: string } | null;
 };
 
-const { title, description, pubDate, updatedDate, heroImage, heroText, heroImageCredit, prevPost, nextPost } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, heroText, heroImageCredit, imageAltText, prevPost, nextPost } = Astro.props;
 ---
 
 <html lang="en">
@@ -152,6 +152,7 @@ const { title, description, pubDate, updatedDate, heroImage, heroText, heroImage
 						heroImage={heroImage}
 						heroText={heroText}
 						heroImageCredit={heroImageCredit}
+						altText={imageAltText || description}
 					/>
 				</div>
 				<div class="prose">

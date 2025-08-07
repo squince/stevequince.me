@@ -1,11 +1,12 @@
 ---
 title: 'Servant Leadership'
-description: 'Photograph of a hand holding a trash bag with a blurred outdoor scene in the background'
+description: 'Exploring the philosophy of servant leadership and how leading by serving others creates stronger teams and lasting impact in software development and beyond.'
 postReady: true
 pubDate: 'July 13, 2025'
 heroImage: '../../assets/trash-bag-by-somboon-kaeoboonsong.jpg'
 heroText: ''
 heroImageCredit: 'Somboon Kaeoboonsong via iStock'
+imageAltText: 'Photograph of a hand holding a trash bag with a blurred outdoor scene in the background'
 ---
 
 ### Philosophy

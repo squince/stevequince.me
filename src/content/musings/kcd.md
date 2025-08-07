@@ -1,11 +1,12 @@
 ---
 title: 'xKCD'
-description: 'Photograph of glass pyramid on a light blue background'
+description: 'A framework for software development success based on four key principles: x (lessons from failure), K (keep it stupid simple), C (communicate, collaborate, cooperate), and D (do no harm).'
 postReady: true
 pubDate: 'August 6, 2025'
 heroImage: '../../assets/triangular-prism-bymichael-dziedzic.jpg'
 heroText: ''
 heroImageCredit: 'Photo by Michael Dziedzic via Unsplash'
+imageAltText: 'Photograph of glass pyramid on a light blue background'
 ---
 
 ### Sharing is Caring

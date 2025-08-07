@@ -1,11 +1,12 @@
 ---
 title: 'A Late Bloomer'
-description: 'Photograph of a single Helenium in focus over a blurred field of flowers in the background'
+description: 'A personal reflection on embracing the journey of being a late bloomer, from academic struggles to finding strength in persistence and gradual growth.'
 postReady: true
 pubDate: 'June 26 2025'
 heroImage: '../../assets/helenium-by-roman-biernacki-via-pexels.jpg'
 heroText: ''
 heroImageCredit: 'Roman Biernacki via Pexels'
+imageAltText: 'Photograph of a single Helenium in focus over a blurred field of flowers in the background'
 ---
 
 ### Reflection

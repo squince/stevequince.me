@@ -83,6 +83,7 @@ const posts = (await getCollection('musings'))
 										heroImage={post.data.heroImage}
 										heroText={post.data.heroText}
 										heroImageCredit={post.data.heroImageCredit}
+										altText={post.data.imageAltText || post.data.description}
 									/>
 									<h4 class="title">{post.data.title}</h4>
                                     <p class="date">

@@ -15,6 +15,7 @@ const musings = defineCollection({
 		heroImage: image().optional(),
 		heroText: z.string().optional(),
 		heroImageCredit: z.string().optional(),
+		imageAltText: z.string().optional(),
 	}),
 });
 

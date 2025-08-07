@@ -5,14 +5,15 @@ export interface Props {
 	heroImage?: ImageMetadata;
 	heroText?: string;
 	heroImageCredit?: string;
+	altText?: string;
 }
 
-const { heroImage, heroText, heroImageCredit } = Astro.props;
+const { heroImage, heroText, heroImageCredit, altText } = Astro.props;
 ---
 
 {heroImage && (
 	<div class="image-container">
-		<Image src={heroImage} alt="" />
+		<Image src={heroImage} alt={altText || "Blog post hero image"} />
 		{heroText && (
 			<div class="overlay-text">
 				<h4 class="title">{heroText}</h4>
