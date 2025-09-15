@@ -1,0 +1,29 @@
+---
+import Icon from './Icon.astro';
+---
+
+<a href="/musings/" class="all-posts-link">
+	<Icon icon="home" size="1em" />
+	All Posts
+</a>
+
+<style>
+	.all-posts-link {
+		display: flex;
+		align-items: center;
+		gap: 0.5em;
+		padding: 0.5em 1em;
+		width: fit-content;
+		color: rgb(var(--gray-dark));
+		text-decoration: none;
+		border-radius: 4px;
+		transition: all 0.2s ease;
+		font-size: 0.9em;
+		font-weight: 500;
+	}
+
+	.all-posts-link:hover {
+		background: rgba(var(--gray-light), 20%);
+		color: rgb(var(--black));
+	}
+</style>

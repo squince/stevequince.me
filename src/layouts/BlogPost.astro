@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import HeroImage from '../components/HeroImage.astro';
+import AllPostsLink from '../components/AllPostsLink.astro';
 
 type Props = CollectionEntry<'musings'>['data'] & {
 	prevPost?: { id: string; title: string } | null;
@@ -37,6 +38,19 @@ const { title, description, pubDate, updatedDate, heroImage, heroText, heroImage
 				padding: 1em;
 				color: rgb(var(--gray-dark));
 			}
+
+			.post-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin: 1em 0;
+			}
+
+
+			.post-date {
+				color: rgb(var(--gray));
+				font-size: 0.9em;
+			}
 			.title {
 				margin-bottom: 1em;
 				padding: 1em 0;
@@ -44,14 +58,11 @@ const { title, description, pubDate, updatedDate, heroImage, heroText, heroImage
 				line-height: 1;
 			}
 			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
+				margin: 0;
 			}
 			.last-updated-on {
 				font-style: italic;
+				margin-top: 0.25em;
 			}
 
 			.post-navigation {
@@ -70,6 +81,12 @@ const { title, description, pubDate, updatedDate, heroImage, heroText, heroImage
 
 			.post-navigation .nav-next {
 				margin-left: auto;
+			}
+
+			.post-navigation .nav-center {
+				display: flex;
+				justify-content: center;
+				align-items: center;
 			}
 
 			.post-navigation a {
@@ -127,7 +144,7 @@ const { title, description, pubDate, updatedDate, heroImage, heroText, heroImage
 				font-size: 0.9em;
 				opacity: 0.9;
 			}
-			
+
 			/* Component-specific responsive adjustments */
 			@media (max-width: 35em) {
 				.prose {
@@ -139,6 +156,22 @@ const { title, description, pubDate, updatedDate, heroImage, heroText, heroImage
 				.post-navigation .nav-title {
 					display: none;
 				}
+				.post-navigation {
+					flex-direction: column;
+					align-items: center;
+					gap: 0.5em;
+				}
+				.post-navigation .nav-prev,
+				.post-navigation .nav-next {
+					margin: 0;
+					width: 100%;
+					text-align: center;
+				}
+				.post-navigation .nav-center {
+					order: 0;
+					width: 100%;
+					justify-content: center;
+				}
 			}
 		</style>
 	</head>
@@ -148,7 +181,7 @@ const { title, description, pubDate, updatedDate, heroImage, heroText, heroImage
 		<main>
 			<article>
 				<div class="hero-image">
-					<HeroImage 
+					<HeroImage
 						heroImage={heroImage}
 						heroText={heroText}
 						heroImageCredit={heroImageCredit}
@@ -156,8 +189,9 @@ const { title, description, pubDate, updatedDate, heroImage, heroText, heroImage
 					/>
 				</div>
 				<div class="prose">
-					<div class="title">
-						<div class="date">
+					<div class="post-header">
+						<AllPostsLink />
+						<div class="post-date">
 							<FormattedDate date={pubDate} />
 							{
 								updatedDate && (
@@ -167,10 +201,12 @@ const { title, description, pubDate, updatedDate, heroImage, heroText, heroImage
 								)
 							}
 						</div>
+					</div>
+					<div class="title">
 						<h1>{title}</h1>
 					</div>
 					<slot />
-					
+
 					{(prevPost || nextPost) && (
 						<div class="post-navigation">
 							{prevPost && (
@@ -179,7 +215,11 @@ const { title, description, pubDate, updatedDate, heroImage, heroText, heroImage
 									<div class="nav-title">{prevPost.title}</div>
 								</a>
 							)}
-							
+
+							<div class="nav-center">
+								<AllPostsLink />
+							</div>
+
 							{nextPost && (
 								<a href={`/musings/${nextPost.id}/`} class="nav-next">
 									<div class="nav-text">Next →</div>
@@ -188,7 +228,7 @@ const { title, description, pubDate, updatedDate, heroImage, heroText, heroImage
 							)}
 						</div>
 					)}
-					
+
 					<hr />
 					<div class="rss-subscribe">
 						<p>Enjoyed this post? <a href="/rss.xml">Subscribe to my RSS feed</a> to get notified of new posts.</p>

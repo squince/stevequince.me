@@ -1,0 +1,32 @@
+brief:
+  working_title: "Talent or Gift"
+  angle: |
+    A gift is a talent that another person perceives as unachievable for themselves.
+    But, a talent is just a skill that has been nurtured and developed over time.
+    - Creativity takes Effort
+    - Nature vs Nurture
+      - Both nature & nurture
+    - It often starts with Passion
+      - Execution takes Skill (talent)
+      - Skill takes dedication
+      - Dedication is built on Passion
+    - And requires Patience
+      - Incrementalism
+      - Iteration
+      - Critical mass
+    - Diversity
+      - Juxtaposition of different skills & motivations
+      - Distinctiveness & novelty (creativity)
+      - Symbiosis & synchronization
+  audience: "creatives, artists, lay people, parents, students, teachers"
+  purpose: "educate"
+  must_include: ["talent", "gift", "skill", "nurtured", "developed", "achievable", "dedication", "practice", "persistence", "perseverance", "dedication", "practice", "persistence", "perseverance"]
+  avoid: ["em dashes", "colons", "semicolons", "exclamation marks"]
+  length: "500–1,000 words"
+  structure: "intro + 3–7 sections + close"
+  voice_dials:
+    energy: "measured"
+    humor: "light"
+    personal_anecdotes: "allowed"
+    formality: "informal"
+  research_mode: "on"  # set to "on" to allow browsing + citations
